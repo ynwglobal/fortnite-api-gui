@@ -1,4 +1,4 @@
-# Fortnite API GUI 🔫🛰️
+# Fortnite API GUI 🛰️
 
 A powerful desktop GUI built with Python and Tkinter for exploring the Fortnite API — view stats, cosmetics, news, shop data, creative islands, and more.
 
