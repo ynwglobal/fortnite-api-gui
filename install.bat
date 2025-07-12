@@ -2,8 +2,9 @@
 title FortniteAPI Setup - GLOBAL
 color 0A
 
-echo [*] Checking for Python...
+echo [GLOBAL Setup] Checking for Python...
 
+:: Check if Python is installed
 python --version >nul 2>&1
 if errorlevel 1 (
     echo [!] Python not found. Downloading installer...
@@ -11,12 +12,19 @@ if errorlevel 1 (
     echo [*] Installing Python silently...
     start /wait python_installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_pip=1
     del python_installer.exe
-    echo [✓] Python installed successfully.
+    echo [✓] Python installed successfully. Please restart this script.
+    pause
+    exit /b
 )
 
-echo [*] Installing required Python packages...
+echo [GLOBAL Setup] Installing required Python packages...
 python -m pip install --upgrade pip >nul
 python -m pip install -r requirements.txt
 
-echo [✓] Setup complete.
+echo.
+echo [✓] GLOBAL Fortnite API GUI is ready!
+echo ----------------------------------------
+echo Launching the GUI now...
+echo ----------------------------------------
+python gui.py
 pause
