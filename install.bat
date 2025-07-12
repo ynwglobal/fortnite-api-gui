@@ -1,0 +1,22 @@
+@echo off
+title FortniteAPI Setup - GLOBAL
+color 0A
+
+echo [*] Checking for Python...
+
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo [!] Python not found. Downloading installer...
+    powershell -Command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe -OutFile python_installer.exe"
+    echo [*] Installing Python silently...
+    start /wait python_installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_pip=1
+    del python_installer.exe
+    echo [✓] Python installed successfully.
+)
+
+echo [*] Installing required Python packages...
+python -m pip install --upgrade pip >nul
+python -m pip install -r requirements.txt
+
+echo [✓] Setup complete.
+pause
